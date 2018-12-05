@@ -1,51 +1,43 @@
+require 'pry'
+
 class ArtworksController < ApplicationController
-  before_action :set_artwork, only: [:show, :update, :destroy]
+    attr_accessor :artwork
+    
+    before_action :set_artwork, only: [:show, :update, :destroy]
 
-  # GET /artworks
-  def index
-    @artworks = Artwork.all
-
-    render json: @artworks
-  end
-
-  # GET /artworks/1
-  def show
-    render json: @artwork
-  end
-
-  # POST /artworks
-  def create
-    @artwork = Artwork.new(artwork_params)
-
-    if @artwork.save
-      render json: @artwork, status: :created, location: @artwork
-    else
-      render json: @artwork.errors, status: :unprocessable_entity
+    def index
+        artworks_by_user_id = Artwork.artworks_by_user_id(params[:user_id])
+        json_response(artworks_by_user_id)
     end
-  end
 
-  # PATCH/PUT /artworks/1
-  def update
-    if @artwork.update(artwork_params)
-      render json: @artwork
-    else
-      render json: @artwork.errors, status: :unprocessable_entity
+    def show
+        json_response(artwork)
     end
-  end
 
-  # DELETE /artworks/1
-  def destroy
-    @artwork.destroy
-  end
+    def create
+        artwork = Artwork.create!(artwork_params)
+        response = { message: Message.account_created }
+        json_response(response, :created)
+    end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
+    def destroy
+        artwork.destroy!
+        response = { message: Message.deleted('Artwork') }
+        json_response(response)
+    end
+
+    def update
+        artwork.update!(artwork_params)
+        json_response(artwork)
+    end
+
+    private
+
     def set_artwork
-      @artwork = Artwork.find(params[:id])
+        @artwork = Artwork.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def artwork_params
-      params.require(:artwork).permit(:title, :image_url, :user_id)
+        params.require(:artwork).permit(:title, :image_url, :artist_id, :user_id)
     end
 end

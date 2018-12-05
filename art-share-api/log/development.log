@@ -12344,3 +12344,945 @@ Processing by UsersController#index as */*
 Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/users" for 127.0.0.1 at 2018-12-03 13:15:52 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.65ms)
+Completed 200 OK in 26ms (Views: 14.2ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-03 13:16:12 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.84ms)
+Completed 200 OK in 27ms (Views: 21.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-12-03 13:16:52 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2018-12-03 13:16:55 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 404 Not Found in 5ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-12-03 13:17:25 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"username"=>"peternorvig", "user"=>{"username"=>"peternorvig"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "peternorvig"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "peternorvig"], ["created_at", "2018-12-03 21:17:25.753134"], ["updated_at", "2018-12-03 21:17:25.753134"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/users/12" for 127.0.0.1 at 2018-12-03 13:17:45 -0800
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Load (2.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 12]]
+  [1m[36mArtworkShare Load (0.7ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 12]]
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 37ms (Views: 0.4ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-03 13:17:51 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/11" for 127.0.0.1 at 2018-12-03 13:18:01 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-03 15:11:46 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 11ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/users/8" for 127.0.0.1 at 2018-12-03 15:12:11 -0800
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"paulgraham", "id"=>"8", "user"=>{"username"=>"paulgraham"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "paulgraham"], ["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["username", "paulgraham"], ["updated_at", "2018-12-03 23:12:11.253602"], ["id", 8]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2018-12-03 15:12:49 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/users/1" for 127.0.0.1 at 2018-12-03 15:13:05 -0800
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"paulgraham", "id"=>"1", "user"=>{"username"=>"paulgraham"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 404 Not Found in 5ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-03 15:19:12 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.46ms)
+Completed 200 OK in 21ms (Views: 12.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/14" for 127.0.0.1 at 2018-12-03 15:19:23 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.13ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/14" for 127.0.0.1 at 2018-12-03 15:23:20 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 14ms (Views: 1.4ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 17:39:03 -0800
+Processing by ArtworksController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.24ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 17:39:46 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+No serializer found for resource: #<Artwork id: 4, title: "Mona Lisa", image_url: "www.monalisa.com", artist_id: 7, created_at: "2018-12-03 01:38:26", updated_at: "2018-12-03 01:38:26">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Artwork::ActiveRecord_Relation (1.11ms)
+Completed 200 OK in 43ms (Views: 30.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:40:43 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:21:in `artwork_params'
+  app/controllers/artworks_controller.rb:17:in `set_artwork'
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:44:28 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.04ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 17:44:36 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+No serializer found for resource: #<Artwork id: 4, title: "Mona Lisa", image_url: "www.monalisa.com", artist_id: 7, created_at: "2018-12-03 01:38:26", updated_at: "2018-12-03 01:38:26">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Artwork::ActiveRecord_Relation (0.49ms)
+Completed 200 OK in 18ms (Views: 11.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:44:44 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.03ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:45:15 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.06ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:45:22 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.03ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:45:35 -0800
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.12ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:46:02 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.06ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:46:43 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.05ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/11" for 127.0.0.1 at 2018-12-03 17:47:07 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"11"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.04ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-03 17:47:12 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.52ms)
+Completed 200 OK in 32ms (Views: 21.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/11" for 127.0.0.1 at 2018-12-03 17:47:45 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"11"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.04ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/11" for 127.0.0.1 at 2018-12-03 17:47:47 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"11"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.03ms)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Started GET "/users" for 127.0.0.1 at 2018-12-03 17:50:48 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 12ms (Views: 5.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2018-12-03 17:50:58 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"8"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.05ms)
+Completed 200 OK in 3ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2018-12-03 17:53:52 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"8"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.04ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2018-12-03 17:53:54 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"8"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.03ms)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2018-12-03 17:54:08 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 29ms (Views: 11.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:54:14 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Artwork (0.45ms)
+Completed 200 OK in 40ms (Views: 12.0ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/artworks/6" for 127.0.0.1 at 2018-12-03 17:56:56 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers] Rendered ArtworkSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 25ms (Views: 1.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-03 17:58:45 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"title"=>"Ayooo", "image_url"=>"www.ayooo.com", "artwork"=>{"title"=>"Ayooo", "image_url"=>"www.ayooo.com"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 201 Created in 9ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artwork" for 127.0.0.1 at 2018-12-03 17:58:53 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/artwork"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 17:58:55 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-03 17:59:13 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"title"=>"Ayooo", "image_url"=>"www.ayooo.com", "artwork"=>{"title"=>"Ayooo", "image_url"=>"www.ayooo.com"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" IS NULL LIMIT $2[0m  [["title", "Ayooo"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 25ms (Views: 3.6ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-03 18:00:19 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"title"=>"Ayooo", "image_url"=>"www.ayooo.com", "artist_id"=>"11", "artwork"=>{"title"=>"Ayooo", "image_url"=>"www.ayooo.com", "artist_id"=>"11"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Ayooo"], ["artist_id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "image_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Ayooo"], ["image_url", "www.ayooo.com"], ["artist_id", 11], ["created_at", "2018-12-04 02:00:19.718451"], ["updated_at", "2018-12-04 02:00:19.718451"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 201 Created in 34ms (Views: 9.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 18:00:23 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/artworks/8" for 127.0.0.1 at 2018-12-03 18:04:04 -0800
+Processing by ArtworksController#destroy as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 12ms (Views: 3.5ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/artworks/7" for 127.0.0.1 at 2018-12-03 18:04:15 -0800
+Processing by ArtworksController#destroy as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "artworks" WHERE "artworks"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 1.5ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/artworks/6" for 127.0.0.1 at 2018-12-03 18:05:50 -0800
+Processing by ArtworksController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "artworks" WHERE "artworks"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 19ms (Views: 3.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 18:05:54 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/artworks/4" for 127.0.0.1 at 2018-12-03 18:07:16 -0800
+Processing by ArtworksController#update as HTML
+  Parameters: {"title"=>"My Mona Lisa", "id"=>"4", "artwork"=>{"title"=>"My Mona Lisa"}}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND ("artworks"."id" != $2) AND "artworks"."artist_id" = $3 LIMIT $4[0m  [["title", "My Mona Lisa"], ["id", 4], ["artist_id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "artworks" SET "title" = $1, "updated_at" = $2 WHERE "artworks"."id" = $3[0m  [["title", "My Mona Lisa"], ["updated_at", "2018-12-04 02:07:16.788667"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ArtworkSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 31ms (Views: 1.4ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-03 18:07:19 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-04 16:53:31 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (8.0ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.73ms)
+Completed 200 OK in 42ms (Views: 10.5ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2018-12-04 16:53:42 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.42ms)
+Completed 200 OK in 17ms (Views: 6.7ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-04 16:54:20 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"10", "artwork"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:39:in `artwork_params'
+  app/controllers/artworks_controller.rb:16:in `create'
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-04 16:57:59 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"10", "artwork"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 1.4ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:39:in `artwork_params'
+  app/controllers/artworks_controller.rb:16:in `create'
+
+Started POST "/artworks" for 127.0.0.1 at 2018-12-04 16:58:12 -0800
+Processing by ArtworksController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"10", "artwork"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:39:in `artwork_params'
+  app/controllers/artworks_controller.rb:16:in `create'
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 16:59:03 -0800
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected tCONSTANT, expecting keyword_do or '{' or '('
+    response = { message ARTWORK_SHARED_MESSAGE }
+                                               ^:
+  app/controllers/artwork_shares_controller.rb:7:in `'
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 16:59:18 -0800
+
+AbstractController::ActionNotFound - The action 'create' could not be found for ArtworkSharesController:
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 16:59:41 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"10", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"10"}}
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 1.6ms)
+
+
+
+NameError - undefined local variable or method `artwork_shares' for #<ArtworkSharesController:0x00007fe93f21fbd0>
+Did you mean?  artwork_shares_url
+               artwork_shares_path
+               artwork_share_params
+               artwork_share_url:
+  app/controllers/artwork_shares_controller.rb:6:in `create'
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 16:59:53 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"10", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"10"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (6.8ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 4 LIMIT $2[0m  [["viewer_id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 4], ["viewer_id", 10], ["created_at", "2018-12-05 00:59:53.843553"], ["updated_at", "2018-12-05 00:59:53.843553"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 201 Created in 64ms (Views: 5.6ms | ActiveRecord: 18.4ms)
+
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:00:03 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"11", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"11"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 4 LIMIT $2[0m  [["viewer_id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 4], ["viewer_id", 11], ["created_at", "2018-12-05 01:00:03.917785"], ["updated_at", "2018-12-05 01:00:03.917785"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 201 Created in 7ms (Views: 0.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:01:19 -0800
+
+SyntaxError - syntax error, unexpected '}', expecting =>:
+  app/controllers/artwork_shares_controller.rb:7:in `'
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:03:27 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"12", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"12"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" IS NULL AND "artwork_shares"."artwork_id" = 4 LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 44ms (Views: 3.7ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:03:37 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"8", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"8"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 4 LIMIT $2[0m  [["viewer_id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 4], ["viewer_id", 8], ["created_at", "2018-12-05 01:03:37.020321"], ["updated_at", "2018-12-05 01:03:37.020321"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.1ms)
+
+
+
+TypeError - no implicit conversion of ArtworkShare into Hash:
+  app/controllers/artwork_shares_controller.rb:7:in `create'
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:04:37 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"8", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"8"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 4 LIMIT $2[0m  [["viewer_id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 39ms (Views: 3.7ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:04:43 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"4", "viewer_id"=>"9", "artwork_share"=>{"artwork_id"=>"4", "viewer_id"=>"9"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 4 LIMIT $2[0m  [["viewer_id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/artwork_shares" for 127.0.0.1 at 2018-12-04 17:04:55 -0800
+Processing by ArtworkSharesController#create as HTML
+  Parameters: {"artwork_id"=>"5", "viewer_id"=>"10", "artwork_share"=>{"artwork_id"=>"5", "viewer_id"=>"10"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mArtworkShare Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artwork_id" = 5 LIMIT $2[0m  [["viewer_id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 5], ["viewer_id", 10], ["created_at", "2018-12-05 01:04:55.638755"], ["updated_at", "2018-12-05 01:04:55.638755"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ArtworkShare (0.26ms)
+Completed 201 Created in 10ms (Views: 5.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/artwork" for 127.0.0.1 at 2018-12-04 17:08:18 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/artwork"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/artworks" for 127.0.0.1 at 2018-12-04 17:08:22 -0800
+Processing by ArtworksController#index as */*
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 21ms (Views: 16.6ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mArtworkShare Load (0.6ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+Started DELETE "/artwork_shares/11" for 127.0.0.1 at 2018-12-04 17:10:14 -0800
+Processing by ArtworkSharesController#destroy as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 4.3ms)
+
+
+
+NoMethodError - undefined method `destroy!' for #<Class:0x00007fe93f23ead0>
+Did you mean?  destroy:
+  app/controllers/artwork_shares_controller.rb:15:in `destroy'
+
+Started DELETE "/artwork_shares/11" for 127.0.0.1 at 2018-12-04 17:10:47 -0800
+Processing by ArtworkSharesController#destroy as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "artwork_shares" WHERE "artwork_shares"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ArtworkShareSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 3.0ms)
+
+
+  [1m[36mArtworkShare Load (0.5ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 7]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 7]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArtworkShare Load (0.4ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 7]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 7]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 7]]
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 LIMIT $2[0m  [["viewer_id", 7], ["LIMIT", 11]]
+Started GET "/users" for 127.0.0.1 at 2018-12-04 19:56:39 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 13ms (Views: 6.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/artworks" for 127.0.0.1 at 2018-12-04 19:56:48 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/artworks"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2018-12-04 19:59:50 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/artworks/7" for 127.0.0.1 at 2018-12-04 19:59:59 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"7"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected ':', expecting ')'
+...iewer_id = :user_id', :user_id: user_id)
+...                               ^:
+  app/models/artwork.rb:12:in `'
+  app/controllers/artworks_controller.rb:36:in `set_artwork'
+
+Started GET "/artworks/7" for 127.0.0.1 at 2018-12-04 20:00:29 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"7"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected ':', expecting ')'
+...ewer_id = :user_id)', :user_id: user_id)
+...                               ^:
+  app/models/artwork.rb:12:in `'
+  app/controllers/artworks_controller.rb:36:in `set_artwork'
+
+Started GET "/artworks/7" for 127.0.0.1 at 2018-12-04 20:01:56 -0800
+Processing by ArtworksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 404 Not Found in 10ms (Views: 3.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:02:36 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:44:in `artwork_params'
+  app/controllers/artworks_controller.rb:40:in `set_user'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:03:46 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 400 Bad Request in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:44:in `artwork_params'
+  app/controllers/artworks_controller.rb:40:in `set_user'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:04:01 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artworks_controller.rb:44:in `artwork_params'
+  app/controllers/artworks_controller.rb:40:in `set_user'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:04:29 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `artworks_by_user_id' for #<Class:0x00007fbb7fb2ac18>
+Did you mean?  artwork_by_user_id:
+  app/controllers/artworks_controller.rb:7:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:05:08 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `left_outer_join' for #<Class:0x00007fbb7e2b0458>
+Did you mean?  left_outer_joins:
+  app/models/artwork.rb:11:in `artworks_by_user_id'
+  app/controllers/artworks_controller.rb:7:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:05:39 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/concerns/response.rb:3:in `json_response'
+  app/controllers/artworks_controller.rb:8:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:06:28 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/artworks_controller.rb:8:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:06:59 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/artworks_controller.rb:10:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:07:10 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/artworks_controller.rb:10:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:07:25 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.48ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/concerns/response.rb:3:in `json_response'
+  app/controllers/artworks_controller.rb:10:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:07:34 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:07:45 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.47ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/concerns/response.rb:3:in `json_response'
+  app/controllers/artworks_controller.rb:10:in `index'
+
+  [1m[36mArtwork Load (4.5ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.8ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7))[0m
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 7) OR (artwork_share.viewer_id = 7)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 8) OR (artwork_share.viewer_id = 8))[0m
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 8) OR (artwork_share.viewer_id = 8)) LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artwork.artist_id = 8) OR (artwork_share.viewer_id = 8))[0m
+  [1m[36mArtwork Load (4.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = 8) OR (artwork_shares.viewer_id = 8))[0m
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = 8) OR (artwork_shares.viewer_id = 8))[0m
+Started GET "/user/7/artworks" for 127.0.0.1 at 2018-12-04 20:22:00 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/user/7/artworks"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:22:13 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - only Hash, Symbol and Array are allowed:
+  app/controllers/concerns/response.rb:3:in `json_response'
+  app/controllers/artworks_controller.rb:10:in `index'
+
+Started GET "/users/7/artworks" for 127.0.0.1 at 2018-12-04 20:22:39 -0800
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"7"}
+  [1m[36mArtwork Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '7') OR (artwork_shares.viewer_id = '7'))[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 40ms (Views: 31.8ms | ActiveRecord: 4.5ms)
+
+
